@@ -3,7 +3,8 @@ name: Sync to Azure DevOps
 on:
   push:
     branches:
-      - master # Synchronizuj tylko z gałęzią "master"
+      - main # Synchronizuj tylko z gałęzią "master"
+      - feature/* #synchro wszystkich galezi feature
 
 jobs:
   sync:
