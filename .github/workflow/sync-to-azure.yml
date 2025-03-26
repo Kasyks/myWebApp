@@ -1,0 +1,27 @@
+name: Sync to Azure DevOps
+
+on:
+  push:
+    branches:
+      - master # Synchronizuj tylko z gałęzią "master"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout kodu z GitHuba
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Skonfiguruj Git
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      # Dodaj repozytorium Azure DevOps jako dodatkowe remote
+      - name: Add Azure DevOps remote
+        run: |
+          git remote add azure-origin ${{ secrets.AZURE_DEVOPS_URL }}/_git/EShopWeb_
+          git push azure-origin main --force

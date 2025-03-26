@@ -15,7 +15,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+//tutaj chyba czegos brakuje
 app.UseRouting();
 
 app.UseAuthorization();
