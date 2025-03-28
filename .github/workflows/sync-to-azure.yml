@@ -25,7 +25,7 @@ jobs:
           AZURE_PAT: ${{ secrets.AZURE_PAT }}
         run: |
           git remote add azure "https://oauth2:$AZURE_PAT@$AZURE_REPO_URL"
-          git fetch --all
+          git fetch origin
           git pull azure --all --rebase
           git push azure --all --force
           git push azure --prune
