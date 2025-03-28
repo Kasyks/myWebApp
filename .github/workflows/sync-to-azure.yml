@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - feature/*  # Synchronizuj również gałęzie feature/*
+      - feature/*  # Synchronizuj również gałęzie feature/* 
 
 jobs:
   sync-to-azure:
@@ -25,6 +25,7 @@ jobs:
           AZURE_PAT: ${{ secrets.AZURE_PAT }}
         run: |
           git remote add azure "https://oauth2:$AZURE_PAT@$AZURE_REPO_URL"
-          git fetch azure
-          git push azure --all
+          git fetch --all
+          git pull azure --all --rebase
+          git push azure --all --force
           git push azure --prune
