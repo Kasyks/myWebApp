@@ -25,19 +25,7 @@ jobs:
           AZURE_PAT: ${{ secrets.AZURE_PAT }}
         run: |
           git remote add azure "https://oauth2:$AZURE_PAT@$AZURE_REPO_URL"
-          git fetch origin
-          
-          # Synchronizacja wszystkich branchy
-          for branch in $(git branch -r | grep -E 'origin/' | grep -v 'HEAD\|main' | sed 's/origin\///'); do
-            git checkout $branch
-            git pull azure $branch --rebase
-            git push azure $branch --force
-          done
-
-          # Obsługa main osobno
-          git checkout main
-          git pull azure main --rebase
-          git push azure main --force
-
-          # Usunięcie nieistniejących branches
+          git fetch --all
+          git pull azure --all --rebase
+          git push azure --all --force
           git push azure --prune
