@@ -27,4 +27,4 @@ jobs:
           git remote add azure "https://oauth2:$AZURE_PAT@$AZURE_REPO_URL"
           git fetch azure
           git push azure --all
-
+          git push azure --prune
