@@ -17,4 +17,8 @@ changelog:
         - enhancement
     - title: Other Changes
       labels:
-        - *
+        - Semver-Patch
+        - docs
+        - other-label-1
+        - other-label-2
+        # Dodaj tutaj inne etykiety, które chcesz uwzględnić
